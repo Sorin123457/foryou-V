@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>For You</title>
+  <title>For Vero</title>
   <style>
     * {
       box-sizing: border-box;
@@ -15,7 +15,7 @@
     html, body {
       width: 100%;
       height: 100%;
-       height: 100dvh;
+      height: 100dvh;
       background-color: #040305;
       overflow: hidden;
       display: flex;
@@ -83,7 +83,6 @@
       const T_GLOW = T_R0 + 1.8;
       const T_FIRE_END = T_BURN + T_SPREAD + 2.2;
 
-      // Python-compatible modulo for negative numbers
       const mod = (a, b) => ((a % b) + b) % b;
       const clamp = (v, lo = 0.0, hi = 1.0) => (v < lo ? lo : v > hi ? hi : v);
       const ease = (t) => {
@@ -97,7 +96,6 @@
       ];
       const sc = (c, k) => [c[0] * k, c[1] * k, c[2] * k];
 
-      // Seeded PRNG (deterministic like random.Random(21))
       function makeRNG(seed) {
         let s = seed >>> 0;
         return {
@@ -126,7 +124,6 @@
 
       const rng = makeRNG(21);
 
-      // Virtual grid metrics matching Tkinter font metrics
       const CW = 7;
       const CH = 14;
       const ROWS = 44;
@@ -283,11 +280,13 @@
         F: ["###", "#..", "##.", "#..", "#.."],
         O: ["###", "#.#", "#.#", "#.#", "###"],
         R: ["##.", "#.#", "##.", "#.#", "#.#"],
+        V: ["#.#", "#.#", "#.#", "#.#", ".#."],
+        E: ["###", "#..", "##.", "#..", "###"],
         Y: ["#.#", "#.#", ".#.", ".#.", ".#."],
         U: ["#.#", "#.#", "#.#", "#.#", "###"],
         " ": ["...", "...", "...", "...", "..."],
       };
-      const TEXT = "FOR YOU";
+      const TEXT = "FOR VERO";
       const TXT = ["", "", "", "", ""];
       for (let i = 0; i < TEXT.length; i++) {
         const ch = TEXT[i];
@@ -1483,7 +1482,6 @@
         draw_click(t, dt, grid);
         draw_cursor(t, grid);
 
-        // Draw to Canvas
         ctx.save();
         ctx.scale(renderScale, renderScale);
         ctx.fillStyle = bgHex;
@@ -1522,7 +1520,6 @@
       });
       document.getElementById("restart-btn").addEventListener("click", restart);
 
-      // Lock simulation step to 30 FPS so fire physics matches Tkinter speed
       const FRAME_MS = 1000 / FPS;
       let lastTick = performance.now();
 
